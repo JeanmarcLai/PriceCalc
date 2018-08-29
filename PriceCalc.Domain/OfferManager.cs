@@ -31,8 +31,8 @@ namespace PriceCalc.Domain
                     Name = "Buy 2 Butter and get a Bread at 50% off",
                     Price = -1 * breads.First().Price / 2M *
                     Math.Min(
-                        products.Count(_ => _.Id == 1) / 2,
-                        products.Count(_ => _.Id == 3)
+                        butters.Count() / 2,
+                        breads.Count()
                     )
                 };
             });
