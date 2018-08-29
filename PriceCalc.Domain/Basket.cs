@@ -21,7 +21,13 @@ namespace PriceCalc.Domain
         {
             var offers = new List<Offer>();
             _basket.RemoveAll(_ => _.GetType() == typeof(Offer));
-            _offerManager.Offers.ForEach(_ => offers.Add(_.Invoke(_basket)));
+            _offerManager.Offers.ForEach(_ =>
+            {
+                var offer = _.Invoke(_basket);
+                if(offer != null)
+                    offers.Add(offer);
+            });
+            
             _basket.AddRange(offers);
         }
 
